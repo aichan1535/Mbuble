@@ -3,192 +3,786 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUBLÉ COIN - Smooth Crypto</title>
+    <title>$BUBLÉ | The Legend</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">🎤 BUBLÉ</div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Vibe</a></li>
-                <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-            </ul>
-            <button class="buy-btn">Buy Now</button>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="vinyl-loader">
+                <div class="vinyl-disc">
+                    <div class="vinyl-grooves"></div>
+                    <div class="vinyl-center"></div>
+                    <div class="vinyl-label">
+                        <span class="vinyl-text">$MBUBLE</span>
+                    </div>
+                </div>
+                <div class="vinyl-arm"></div>
+            </div>
+            <p class="loading-text">DEFROSTING...</p>
         </div>
+    </div>
+
+    <div class="bg-fixed-gradient"></div>
+    <div class="bg-scroll-overlay" id="overlay"></div>
+    <div id="snow-container"></div>
+
+    <nav class="top-nav">
+        <div class="nav-logo">$MBUBLE</div>
+        <button class="buy-pill">BUY $BUBLÉ</button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="coin-container">
-                <div class="vinyl-record">
-                    <div class="record-shine"></div>
-                    <div class="record-label">🎤</div>
+    <section class="hero-section">
+        <h1 class="main-title-glow">$MBUBLE</h1>
+
+        <div class="timer-container">
+            <div class="timer-label">TRUST US....</div>
+            <div class="timer-display">
+                <div class="time-block"><span id="hours">00</span><label>HOURS</label></div>
+                <div class="time-block"><span id="minutes">00</span><label>MINS</label></div>
+                <div class="time-block"><span id="seconds">00</span><label>SECS</label></div>
+            </div>
+        </div>
+
+        <div class="hero-cta-area">
+            <p class="hero-quote">“Let it snow, let it snow, let it snow!”</p>
+            <div class="hero-btns">
+                <button class="btn-primary-glow">BUY $MBUBLE</button>
+                <button class="btn-secondary" onclick="scrollToTunes()">EXPLORE $MBUBLE</button>
+            </div>
+            <a href="#tunes" class="experience-link" onclick="scrollToTunes(event)">see the full experience</a>
+            
+            <div class="hero-social-icons">
+                <a href="https://x.com/i/communities/2003515773181124670" target="_blank" class="social-icon-hero" title="X Community">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <!-- Back left figure (smaller) -->
+                        <circle cx="7" cy="15" r="2.5"/>
+                        <rect x="6" y="17.5" width="2" height="3" rx="0.5"/>
+                        <!-- Back right figure (smaller) -->
+                        <circle cx="17" cy="15" r="2.5"/>
+                        <rect x="16" y="17.5" width="2" height="3" rx="0.5"/>
+                        <!-- Front center figure (larger) -->
+                        <circle cx="12" cy="9" r="3.5"/>
+                        <rect x="11" y="12.5" width="2" height="4" rx="0.5"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/MBUBLECOIN" target="_blank" class="social-icon-hero" title="X Account">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://dexscreener.com" target="_blank" class="social-icon-hero" title="Dexscreener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <!-- Owl head outline -->
+                        <path d="M12 3C8.5 3 6 5.5 6 9c0 1.5.5 2.8 1.3 3.8L12 20l4.7-7.2c.8-1 1.3-2.3 1.3-3.8 0-3.5-2.5-6-6-6z"/>
+                        <!-- Angular left eyebrow -->
+                        <path d="M5 6l2 2-1 1-2-2z"/>
+                        <!-- Angular right eyebrow -->
+                        <path d="M19 6l-2 2 1 1 2-2z"/>
+                        <!-- Large left eye -->
+                        <circle cx="9" cy="9.5" r="2"/>
+                        <!-- Large right eye -->
+                        <circle cx="15" cy="9.5" r="2"/>
+                        <!-- Sharp beak pointing down -->
+                        <path d="M12 13l-1.5 2.5h3L12 13z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tunes" class="tunes-section">
+        <h2 class="section-title">THE TUNES OF BUBLÉ</h2>
+        
+        <div class="tunes-grid">
+            <div class="cd-case" onclick="openVinylPlayer('CHRISTMAS (2025 EDIT)', 'Michael Bublé Christmas')">
+                <div class="cd-disc">
+                    <div class="disc-shine"></div>
+                </div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif">
+                    <div class="cd-info"><p>CHRISTMAS (2025 EDIT)</p></div>
                 </div>
             </div>
-            <h1 class="hero-title">It's a Beautiful<br>Day to Invest</h1>
-            <p class="hero-subtitle">Smooth crypto, smooth vibes</p>
-            <button class="cta-button">Buy $BUBLÉ</button>
-        </div>
-        <div class="musical-notes">
-            <span class="note">♪</span>
-            <span class="note">♫</span>
-            <span class="note">♪</span>
+            <div class="cd-case" onclick="openVinylPlayer('TO BE LOVED BY WHALES', 'Michael Bublé To Be Loved')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif">
+                    <div class="cd-info"><p>TO BE LOVED BY WHALES</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('CANDLESTICK SWING', 'Michael Bublé Sway')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif">
+                    <div class="cd-info"><p>CANDLESTICK SWING</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('DEFROSTING SOON', 'Michael Bublé Feeling Good')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif">
+                    <div class="cd-info"><p>DEFROSTING SOON</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('THE BULL RUN ANTHEM', 'Michael Bublé Haven\'t Met You Yet')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif">
+                    <div class="cd-info"><p>THE BULL RUN ANTHEM</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('HOLLY JOLLY GAINS', 'Michael Bublé Holly Jolly Christmas')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif">
+                    <div class="cd-info"><p>HOLLY JOLLY GAINS</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('SNOWY CANDLES', 'Michael Bublé Let It Snow')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif">
+                    <div class="cd-info"><p>SNOWY CANDLES</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('WINTER WONDER-WHALE', 'Michael Bublé Winter Wonderland')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif">
+                    <div class="cd-info"><p>WINTER WONDER-WHALE</p></div>
+                </div>
+            </div>
+            <div class="cd-case" onclick="openVinylPlayer('MERRY $MBUBLE', 'Michael Bublé Merry Christmas')">
+                <div class="cd-disc"><div class="disc-shine"></div></div>
+                <div class="cd-cover">
+                    <div class="jewel-hinge"></div>
+                    <img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif">
+                    <div class="cd-info"><p>MERRY $MBUBLE</p></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Vibe Section -->
-    <section class="about" id="about">
-        <h2 class="section-title">The Vibes</h2>
-        <div class="about-grid">
-            <div class="about-card">
-                <div class="card-icon">✨</div>
-                <h3>Elegant</h3>
-                <p>Sophisticated community</p>
-            </div>
-            <div class="about-card">
-                <div class="card-icon">📈</div>
-                <h3>Smooth</h3>
-                <p>Balanced growth</p>
-            </div>
-            <div class="about-card">
-                <div class="card-icon">🚀</div>
-                <h3>Real</h3>
-                <p>Long-term vision</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tokenomics Section -->
-    <section class="tokenomics" id="tokenomics">
-        <h2 class="section-title">Tokenomics</h2>
-        <div class="tokenomics-grid">
-            <div class="chart-container">
-                <canvas id="tokenChart"></canvas>
-            </div>
-            <div class="tokenomics-list">
-                <div class="token-item">
-                    <div class="token-color" style="background: #D4A574;"></div>
-                    <div>
-                        <h4>Community</h4>
-                        <p>40%</p>
+    <!-- Vinyl Player Modal -->
+    <div id="vinyl-modal" class="vinyl-modal-overlay">
+        <div class="vinyl-modal-card">
+            <button class="close-vinyl-modal" onclick="closeVinylPlayer()">✕</button>
+            <div class="vinyl-player-container">
+                <div class="vinyl-player-disc" id="vinyl-disc">
+                    <div class="vinyl-player-grooves"></div>
+                    <div class="vinyl-player-center"></div>
+                    <div class="vinyl-player-label">
+                        <span id="vinyl-song-title">$MBUBLE</span>
                     </div>
                 </div>
-                <div class="token-item">
-                    <div class="token-color" style="background: #8B6F47;"></div>
-                    <div>
-                        <h4>Development</h4>
-                        <p>25%</p>
-                    </div>
+                <div class="vinyl-player-arm" id="vinyl-arm"></div>
+            </div>
+            <div class="vinyl-player-controls">
+                <h3 id="vinyl-modal-title" class="vinyl-song-name"></h3>
+                <div class="vinyl-control-buttons">
+                    <button class="vinyl-play-btn" id="vinyl-play-btn" onclick="toggleVinylPlay()">
+                        <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" style="display: none;">
+                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
                 </div>
-                <div class="token-item">
-                    <div class="token-color" style="background: #F4E4C1;"></div>
-                    <div>
-                        <h4>Marketing</h4>
-                        <p>20%</p>
-                    </div>
-                </div>
-                <div class="token-item">
-                    <div class="token-color" style="background: #6B5B3C;"></div>
-                    <div>
-                        <h4>Reserve</h4>
-                        <p>15%</p>
-                    </div>
-                </div>
+                <p id="player-status" class="player-status" style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 15px;">Loading player...</p>
+                <div id="youtube-player-container" class="youtube-player-container"></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Roadmap Section -->
-    <section class="roadmap" id="roadmap">
-        <h2 class="section-title">Roadmap</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-marker">Q1</div>
-                <div class="timeline-content">
-                    <h3>Launch</h3>
-                    <p>Community & DEX</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker">Q2</div>
-                <div class="timeline-content">
-                    <h3>Growth</h3>
-                    <p>CEX listings</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker">Q3</div>
-                <div class="timeline-content">
-                    <h3>Scale</h3>
-                    <p>Staking & governance</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-marker">Q4</div>
-                <div class="timeline-content">
-                    <h3>Expand</h3>
-                    <p>Global adoption</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="about-us interview-stage">
+    <div class="interview-overlay-bg"></div>
 
-    <!-- Buy Section -->
-    <section class="buy-section">
-        <h2 class="section-title">Get Your BUBLÉ</h2>
-        <div class="buy-card">
-            <div class="buy-options">
-                <button class="buy-option-btn">
-                    <div class="exchange-name">Uniswap</div>
-                    <div class="exchange-price">$0.0021</div>
-                </button>
-                <button class="buy-option-btn">
-                    <div class="exchange-name">Pancakeswap</div>
-                    <div class="exchange-price">$0.0021</div>
-                </button>
-                <button class="buy-option-btn">
-                    <div class="exchange-name">SushiSwap</div>
-                    <div class="exchange-price">$0.0021</div>
-                </button>
-            </div>
-        </div>
-    </section>
+    <div class="interview-content">
+        <h2 class="section-title">THE SESSION</h2>
+        <p class="hero-quote" style="color: rgba(255,255,255,0.6); margin-bottom: 40px;">Select a question to defrost the truth.</p>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Whitepaper</a></li>
-                    <li><a href="#">Contract</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Discord</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
+        <div class="choice-container">
+            <button class="choice-pill" onclick="openInterview('origin')">How did $MBUBLE start?</button>
+            <button class="choice-pill" onclick="openInterview('vision')">What is the vision?</button>
+            <button class="choice-pill" onclick="openInterview('trust')">Is the liquidity safe?</button>
+        </div>
+    </div>
+
+    <div id="interview-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeInterview()">✕</button>
+            <div class="modal-body">
+                <div class="modal-photo">
+                    <img id="modal-img" src="eatmb.jpeg" alt="Interview Photo">
+                </div>
+                <div class="modal-text">
+                    <h3 id="modal-title"></h3>
+                    <div class="divider"></div>
+                    <p id="modal-desc"></p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 BUBLÉ COIN. It's a beautiful day. 🎤</p>
+    </div>
+</section>
+
+
+
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span>THE LEGEND IS DEFROSTING • $MBUBLE • WINTER 2025 • $MBUBLE • THE LEGEND IS DEFROSTING • $MBUBLE •</span>
+        </div>
+    </div>
+
+    <section class="main-gallery-area">
+    <h2 class="section-title">COMMUNITY VIBES</h2>
+
+    <div class="grid-3x3">
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Michael"></div>
+                <div class="post-info">
+                    <div class="name-row">
+                        <span class="user-name">Michael Bublé</span>
+                        <span class="verified-check"><svg viewBox="0 0 24 24" fill="#00d2ff" width="14" height="14"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>
+                    </div>
+                    <span class="post-date">Just now</span>
+                </div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Defrosting in progress... ❄️</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 1.4k</div><div class="stat-pill">💬 82</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Snow"></div>
+                <div class="post-info"><span class="user-name">FrostyWhale</span><span class="post-date">12m ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">The $MBUBLE accumulation is real. 📈</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 842</div><div class="stat-pill">💬 15</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Jazz"></div>
+                <div class="post-info"><span class="user-name">JazzMaster</span><span class="post-date">1h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Swaying through the charts. 🎷</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 2.1k</div><div class="stat-pill">💬 44</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Winter"></div>
+                <div class="post-info"><span class="user-name">WinterBull</span><span class="post-date">2h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Christmas came early this year! 🎁</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 552</div><div class="stat-pill">💬 19</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Buble"></div>
+                <div class="post-info"><span class="user-name">BubleBot</span><span class="post-date">3h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Stay cozy, stay liquid. ❄️💎</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 3.3k</div><div class="stat-pill">💬 120</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Cool"></div>
+                <div class="post-info"><span class="user-name">IceKing</span><span class="post-date">4h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">The coolest community in crypto. 🧊</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 912</div><div class="stat-pill">💬 31</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Gift"></div>
+                <div class="post-info"><span class="user-name">SantaGains</span><span class="post-date">5h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKL9o0lCTeO9uO4/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Did someone say moon? 🌕</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 1.1k</div><div class="stat-pill">💬 67</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Vibe"></div>
+                <div class="post-info"><span class="user-name">VibeChecker</span><span class="post-date">6h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/l2YWs1NexusR6VtgY/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Check passed. $MBUBLE is legit. ✅</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 722</div><div class="stat-pill">💬 22</div></div>
+            </div>
+        </div>
+
+        <div class="grid-item apple-post">
+            <div class="post-top">
+                <div class="pfp-wrap"><img src="https://api.dicebear.com/7.x/notionists/svg?seed=Moon"></div>
+                <div class="post-info"><span class="user-name">MoonWalker</span><span class="post-date">7h ago</span></div>
+            </div>
+            <div class="post-visual"><img src="https://media.giphy.com/media/3o7TKDkDbIDJieKbVm/giphy.gif"></div>
+            <div class="post-content">
+                <p class="caption">Waiting for the final defrost. ⏳</p>
+                <div class="apple-actions"><div class="stat-pill">❤️ 1.5k</div><div class="stat-pill">💬 89</div></div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span>THE LEGEND IS DEFROSTING • $MBUBLE • WINTER 2025 • $MBUBLE • THE LEGEND IS DEFROSTING • $MBUBLE •</span>
+        </div>
+    </div>
+
+
+    <footer class="footer-main">
+        <h1 class="thank-you-text">STAY COZY.</h1>
+        <div class="social-links">
+            <!-- X Community -->
+            <a 
+                href="https://x.com/i/communities/2003515773181124670" 
+                class="social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="X Community"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 4h4l3 4 3-4h4l-5 6 6 8h-4l-4-5-4 5H4l6-8z"/>
+                </svg>
+            </a>
+
+            <!-- X / Twitter Profile -->
+            <a 
+                href="https://x.com/MBUBLECOIN" 
+                class="social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="X / Twitter"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 4h4l3 4 3-4h4l-5 6 6 8h-4l-4-5-4 5H4l6-8z"/>
+                </svg>
+            </a>
+
+            <!-- Dexscreener -->
+            <a 
+                href="https://dexscreener.com" 
+                class="social-icon" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Dexscreener"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 18h16v2H4zM6 16l3-4 3 3 5-7 1 2-6 8-3-3-2 3z"/>
+                </svg>
+            </a>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function scrollToTunes(e) {
+            if(e) e.preventDefault();
+            document.getElementById('tunes').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const overlay = document.getElementById('overlay');
+            const scrollPercent = window.scrollY / (document.body.offsetHeight - window.innerHeight);
+            overlay.style.opacity = Math.min(scrollPercent * 1.5, 0.95);
+        });
+
+        // Countdown to Christmas Dec 25
+        function updateCountdown() {
+            const now = new Date().getTime();
+            // Set target date to December 25 at midnight
+            const currentYear = new Date().getFullYear();
+            const currentDate = new Date();
+            const christmasThisYear = new Date(`December 25, ${currentYear} 00:00:00`).getTime();
+            
+            // If we've passed Dec 25 this year, target next year's Dec 25
+            const countdownDate = now > christmasThisYear 
+                ? new Date(`December 25, ${currentYear + 1} 00:00:00`).getTime()
+                : christmasThisYear;
+            
+            const distance = countdownDate - now;
+
+            if (distance > 0) {
+                // Calculate hours (0-23), minutes, and seconds remaining
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update the display
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            } else {
+                // Countdown has ended
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }
+
+        // Update immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        function createSnowflake() {
+            const snowContainer = document.getElementById('snow-container');
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '•'; 
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 5 + 7 + 's';
+            snowflake.style.opacity = Math.random() * 0.5;
+            snowflake.style.color = Math.random() > 0.3 ? '#fff' : '#00d2ff';
+            snowContainer.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 12000);
+        }
+        setInterval(createSnowflake, 200);
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500); // Show loading screen for at least 1.5 seconds
+        });
+
+        // Vinyl Player Functions
+        let youtubePlayer = null;
+        let isPlaying = false;
+        let currentVideoId = null;
+        let youtubeAPIReady = false;
+        let playerReady = false;
+
+        // YouTube API ready callback (must be global)
+        window.onYouTubeIframeAPIReady = function() {
+            youtubeAPIReady = true;
+            console.log('YouTube API ready');
+        };
+
+        // Check if YouTube API is already loaded
+        if (typeof YT !== 'undefined' && typeof YT.Player !== 'undefined') {
+            youtubeAPIReady = true;
+            console.log('YouTube API already loaded');
+        }
+
+        // Check if script loaded after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+                    console.warn('YouTube API not loaded, attempting to load dynamically');
+                    const script = document.createElement('script');
+                    script.src = 'https://www.youtube.com/iframe_api';
+                    script.onerror = () => {
+                        console.error('Failed to load YouTube API');
+                        alert('Failed to load YouTube API. Please check your internet connection.');
+                    };
+                    script.onload = () => {
+                        console.log('YouTube API script loaded successfully');
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    console.log('✅ YouTube API is loaded and ready!');
+                    console.log('YT object:', typeof YT);
+                    console.log('YT.Player:', typeof YT.Player);
+                }
+            }, 1000);
+        });
+
+        function openVinylPlayer(songTitle, searchQuery) {
+            const modal = document.getElementById('vinyl-modal');
+            const titleElement = document.getElementById('vinyl-modal-title');
+            const songTitleElement = document.getElementById('vinyl-song-title');
+            const statusEl = document.getElementById('player-status');
+            
+            titleElement.textContent = songTitle;
+            songTitleElement.textContent = songTitle;
+            
+            if (statusEl) {
+                statusEl.textContent = 'Loading player...';
+                statusEl.style.color = 'rgba(255,255,255,0.5)';
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Reset playing state and player ready flag
+            isPlaying = false;
+            playerReady = false;
+            updateVinylAnimation();
+
+            // Search for YouTube video
+            searchYouTubeVideo(searchQuery, songTitle);
+        }
+
+        function closeVinylPlayer() {
+            const modal = document.getElementById('vinyl-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            if (youtubePlayer) {
+                try {
+                    youtubePlayer.stop();
+                    youtubePlayer.destroy();
+                } catch(e) {
+                    console.log('Error destroying player:', e);
+                }
+                youtubePlayer = null;
+            }
+            
+            isPlaying = false;
+            playerReady = false;
+            updateVinylAnimation();
+            document.getElementById('youtube-player-container').innerHTML = '';
+        }
+
+        function searchYouTubeVideo(query, songTitle) {
+            // Video ID mapping - you can replace these with actual video IDs
+            const videoMap = {
+                'CHRISTMAS (2025 EDIT)': 'R_vmuL0ojUY', // Michael Bublé - It's Beginning to Look a Lot Like Christmas
+                'TO BE LOVED BY WHALES': '2Vv-BfVoq4g', // Michael Bublé - To Be Loved
+                'CANDLESTICK SWING': 'kTJczUoc26U', // Michael Bublé - Sway
+                'DEFROSTING SOON': 'Edwsf-8F3sI', // Michael Bublé - Feeling Good
+                'THE BULL RUN ANTHEM': '1AJmKkU5POA', // Michael Bublé - Haven't Met You Yet
+                'HOLLY JOLLY GAINS': 'Zb4d6yY7pWc', // Michael Bublé - Holly Jolly Christmas
+                'SNOWY CANDLES': 'Dx5qNfug6j4', // Michael Bublé - Let It Snow
+                'WINTER WONDER-WHALE': 'b8j6jLm5YVY', // Michael Bublé - Winter Wonderland
+                'MERRY $MBUBLE': 'R_vmuL0ojUY' // Michael Bublé - Christmas song
+            };
+
+            const videoId = videoMap[songTitle] || 'R_vmuL0ojUY'; // Default to Christmas song
+            
+            // Clear existing player
+            const container = document.getElementById('youtube-player-container');
+            if (youtubePlayer) {
+                try {
+                    youtubePlayer.destroy();
+                } catch(e) {}
+                youtubePlayer = null;
+            }
+            container.innerHTML = '';
+            
+            // Wait for YouTube API to be ready
+            let attempts = 0;
+            const maxAttempts = 50; // 5 seconds max wait
+            
+            const initPlayer = () => {
+                attempts++;
+                
+                if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+                    if (attempts < maxAttempts) {
+                        setTimeout(initPlayer, 100);
+                    } else {
+                        console.error('YouTube API failed to load after 5 seconds');
+                        alert('YouTube API failed to load. Please refresh the page.');
+                    }
+                    return;
+                }
+                
+                console.log('Creating YouTube player with video ID:', videoId);
+                
+                try {
+                    youtubePlayer = new YT.Player('youtube-player-container', {
+                        height: '1',
+                        width: '1',
+                        videoId: videoId,
+                        playerVars: {
+                            'autoplay': 0,
+                            'controls': 0,
+                            'rel': 0,
+                            'modestbranding': 1,
+                            'enablejsapi': 1,
+                            'origin': window.location.origin
+                        },
+                        events: {
+                            'onReady': function(event) {
+                                console.log('YouTube player ready');
+                                playerReady = true;
+                                const statusEl = document.getElementById('player-status');
+                                if (statusEl) {
+                                    statusEl.textContent = 'Ready to play';
+                                    statusEl.style.color = 'var(--accent-blue)';
+                                }
+                                // Set volume to 70% when player is ready
+                                try {
+                                    event.target.setVolume(70);
+                                    console.log('Volume set to 70%');
+                                } catch(e) {
+                                    console.error('Error setting volume:', e);
+                                }
+                            },
+                            'onStateChange': function(event) {
+                                console.log('Player state changed:', event.data);
+                                onPlayerStateChange(event);
+                            },
+                            'onError': function(event) {
+                                console.error('YouTube player error:', event.data);
+                                alert('Error loading video. Please try another song.');
+                            }
+                        }
+                    });
+                    console.log('YouTube player created successfully');
+                } catch(error) {
+                    console.error('Error creating YouTube player:', error);
+                    alert('Error creating player: ' + error.message);
+                }
+            };
+            
+            initPlayer();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                // Ensure volume is set when playing starts
+                try {
+                    event.target.setVolume(70);
+                } catch(e) {}
+                updateVinylAnimation();
+            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                isPlaying = false;
+                updateVinylAnimation();
+            }
+        }
+
+        function toggleVinylPlay() {
+            console.log('Play button clicked');
+            console.log('youtubePlayer:', youtubePlayer);
+            console.log('isPlaying:', isPlaying);
+            console.log('playerReady:', playerReady);
+            
+            if (!youtubePlayer || !playerReady) {
+                console.log('YouTube player not ready, waiting...');
+                // Wait a bit and try again
+                setTimeout(() => {
+                    if (youtubePlayer && playerReady) {
+                        toggleVinylPlay();
+                    } else {
+                        const statusEl = document.getElementById('player-status');
+                        if (statusEl) {
+                            statusEl.textContent = 'Still loading... Please wait';
+                        }
+                    }
+                }, 500);
+                return;
+            }
+            
+            try {
+                // Check if player methods are available
+                if (typeof youtubePlayer.getPlayerState !== 'function') {
+                    console.log('Player not ready yet, waiting...');
+                    setTimeout(() => toggleVinylPlay(), 500);
+                    return;
+                }
+                
+                // Check if player is ready (state -1 means unstarted/not ready)
+                let playerState = -1;
+                try {
+                    playerState = youtubePlayer.getPlayerState();
+                    console.log('Current player state:', playerState);
+                } catch(e) {
+                    console.log('Could not get player state, player may still be loading');
+                }
+                
+                // Only check state if we got a valid state, otherwise use isPlaying flag
+                if (playerState === -1 || playerState === YT.PlayerState.UNSTARTED) {
+                    // Player not ready, just try to play
+                    console.log('Player not started, attempting to play');
+                    youtubePlayer.setVolume(70);
+                    youtubePlayer.playVideo();
+                } else if (isPlaying || playerState === YT.PlayerState.PLAYING) {
+                    console.log('Pausing video');
+                    youtubePlayer.pauseVideo();
+                } else {
+                    console.log('Playing video');
+                    // Ensure volume is set before playing
+                    youtubePlayer.setVolume(70);
+                    youtubePlayer.playVideo();
+                }
+            } catch(error) {
+                console.error('Error toggling playback:', error);
+                // Don't show alert for getPlayerState errors, just try to play
+                try {
+                    youtubePlayer.setVolume(70);
+                    youtubePlayer.playVideo();
+                } catch(playError) {
+                    alert('Error playing video. Please wait a moment and try again.');
+                }
+            }
+        }
+
+        function updateVinylAnimation() {
+            const vinylDisc = document.getElementById('vinyl-disc');
+            const vinylArm = document.getElementById('vinyl-arm');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            
+            if (isPlaying) {
+                vinylDisc.classList.add('spinning');
+                vinylArm.classList.add('playing');
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                vinylDisc.classList.remove('spinning');
+                vinylArm.classList.remove('playing');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('vinyl-modal');
+            if (e.target === modal) {
+                closeVinylPlayer();
+            }
+        });
+    </script>
 </body>
 </html>

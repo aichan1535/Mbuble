@@ -1,110 +1,89 @@
-// Smooth scroll and intersection observer for animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.classList.add("animate-visible")
+// 1. Initialize Standard Background Snowfall
+function initSnow() {
+    const container = document.getElementById('snow-container');
+    for (let i = 0; i < 50; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        const size = Math.random() * 5 + 2;
+        flake.style.width = size + 'px';
+        flake.style.height = size + 'px';
+        flake.style.left = Math.random() * 100 + 'vw';
+        container.appendChild(flake);
+        flake.animate([{ top: '-10px' }, { top: '100vh' }], {
+            duration: Math.random() * 5000 + 5000,
+            iterations: Infinity
+        });
     }
-  })
-}, observerOptions)
-
-document.querySelectorAll("section").forEach((el) => {
-  observer.observe(el)
-})
-
-// Animated Chart (Tokenomics)
-function drawTokenomicsChart() {
-  const canvas = document.getElementById("tokenChart")
-  if (!canvas) return
-
-  const ctx = canvas.getContext("2d")
-  const centerX = canvas.width / 2
-  const centerY = canvas.height / 2
-  const radius = 70
-
-  const data = [
-    { label: "Community", value: 40, color: "#D4A574" },
-    { label: "Development", value: 25, color: "#8B6F47" },
-    { label: "Marketing", value: 20, color: "#F4E4C1" },
-    { label: "Reserve", value: 15, color: "#6B5B3C" },
-  ]
-
-  canvas.width = 280
-  canvas.height = 280
-
-  let currentAngle = -Math.PI / 2
-
-  data.forEach((segment) => {
-    const sliceAngle = (segment.value / 100) * Math.PI * 2
-
-    ctx.fillStyle = segment.color
-    ctx.beginPath()
-    ctx.moveTo(centerX, centerY)
-    ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle)
-    ctx.lineTo(centerX, centerY)
-    ctx.fill()
-
-    ctx.strokeStyle = "#1A1410"
-    ctx.lineWidth = 2
-    ctx.stroke()
-
-    currentAngle += sliceAngle
-  })
-
-  setTimeout(() => {
-    canvas.style.animation = "spin-slow 8s linear infinite"
-  }, 500)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  drawTokenomicsChart()
+// 2. Scroll Reveal Observer
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+}, { threshold: 0.15 });
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault()
-      const target = document.querySelector(this.getAttribute("href"))
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" })
-      }
-    })
-  })
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* Enhanced button click animation with ripple effect */
-  document.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      const rect = this.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
+// 3. Michael Reacts Logic
+function react(text, emoji) {
+    const displayEmoji = document.getElementById('display-emoji');
+    displayEmoji.style.transform = 'scale(1.3)';
+    setTimeout(() => displayEmoji.style.transform = 'scale(1)', 200);
+    displayEmoji.innerText = emoji;
+    document.getElementById('display-text').innerText = text;
+}
 
-      const ripple = document.createElement("span")
-      ripple.style.position = "absolute"
-      ripple.style.left = x + "px"
-      ripple.style.top = y + "px"
-      ripple.style.width = "0"
-      ripple.style.height = "0"
-      ripple.style.borderRadius = "50%"
-      ripple.style.background = "rgba(255, 255, 255, 0.6)"
-      ripple.style.pointerEvents = "none"
-      ripple.style.transform = "translate(-50%, -50%)"
+// 4. Blizzard Interaction
+document.getElementById('blizzard-btn').addEventListener('click', () => {
+    const container = document.getElementById('snow-container');
+    for (let i = 0; i < 40; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.width = '12px'; flake.style.height = '12px';
+        container.appendChild(flake);
+        flake.animate([{ top: '40vh', opacity: 1 }, { top: '100vh', opacity: 0 }], { 
+            duration: 2000, 
+            easing: 'ease-out' 
+        });
+        setTimeout(() => flake.remove(), 2000);
+    }
+});
 
-      this.style.position = "relative"
-      this.style.overflow = "hidden"
-      this.appendChild(ripple)
+window.onload = initSnow;
 
-      const animation = ripple.animate(
-        [
-          { width: "0", height: "0", opacity: 1 },
-          { width: "300px", height: "300px", opacity: 0 },
-        ],
-        { duration: 600, easing: "ease-out" },
-      )
+const sessionContent = {
+    origin: {
+        title: "How did $MBUBLE start?",
+        desc: "Answer 1: This is a placeholder for the origin story. Explain here how the idea was born and what inspired the $MBUBLE movement.",
+    },
+    vision: {
+        title: "What is the vision?",
+        desc: "Answer 2: This is a placeholder for the vision. Detail the roadmap, future goals, and what holders can expect in the coming months.",
+    },
+    trust: {
+        title: "Is the liquidity safe?",
+        desc: "Answer 3: This is a placeholder for safety. Provide details about locked liquidity, contract audits, and developer transparency here.",
+    }
+};
 
-      animation.onfinish = () => ripple.remove()
-    })
-  })
-})
+function openInterview(key) {
+    const data = sessionContent[key];
+    const modal = document.getElementById('interview-modal');
+    const modalImg = document.getElementById('modal-img');
+    
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-desc').innerText = data.desc;
+    
+    // Force set the image source again to ensure it triggers
+    modalImg.src = "eatmb.jpeg"; 
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeInterview() {
+    document.getElementById('interview-modal').classList.remove('active');
+    document.body.style.overflow = 'auto'; 
+}
